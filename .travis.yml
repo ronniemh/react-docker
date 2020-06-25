@@ -1,21 +1,21 @@
-# sudo: required
-# services:
-#   - docker
+sudo: required
+services:
+  - docker
 
-# # -t y el nobmre que le queramos dar, por convención el nombre del repo en git
-# before_install:
-#   - docker build -t ronnie/docker-react -f Dockerfile.dev .
+# -t y el nobmre que le queramos dar, por convención el nombre del repo en git
+before_install:
+  - docker build -t ronnie/docker-react -f Dockerfile.dev .
 
-# script:
-#   - docker run ronnie/docker-react npm run test -- --coverage
+script:
+  - docker run -e CI=true ronnie/docker-react npm run test
 
 # For new travis https://create-react-app.dev/docs/running-tests/#linux-macos-bash
-language: node_js
-node_js:
-  - 8
-cache:
-  directories:
-    - node_modules
-script:
-  - npm run build
-  - npm test
+# language: node_js
+# node_js:
+#   - 8
+# cache:
+#   directories:
+#     - node_modules
+# script:
+#   - npm run build
+#   - npm test
