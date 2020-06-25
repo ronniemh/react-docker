@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+# -t y el nobmre que le queramos dar, por convención el nombre del repo en git
+before_install:
+  - docker build -t ronnie/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run ronnie/docker-react npm run test -- --coverage
