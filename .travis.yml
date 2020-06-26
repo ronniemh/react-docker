@@ -1,13 +1,13 @@
-# sudo: required
-# services:
-#   - docker
+sudo: required
+services:
+  - docker
 
-# # -t y el nobmre que le queramos dar, por convención el nombre del repo en git
-# before_install:
-#   - docker build -t ronnie/docker-react -f Dockerfile.dev .
+# -t y el nobmre que le queramos dar, por convención el nombre del repo en git
+before_install:
+  - docker build -t ronnie/docker-react -f Dockerfile.dev .
 
-# script:
-#   - docker run -e CI=true ronnie/docker-react npm run test
+script:
+  - docker run -e CI=true ronnie/docker-react npm run test
 
 # For new travis https://create-react-app.dev/docs/running-tests/#linux-macos-bash
 # language: node_js
@@ -22,11 +22,11 @@
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
-  app: "docker-react"
-  env: "DockerReact-env"
+  app: "react-app"
+  env: "react-app-env"
   bucket_name: "elasticbeanstalk-us-east-2-572602263226"
   # el bucket path el mismo que el app
-  bucket_path: "docker-react"
+  bucket_path: "react-app"
   on:
     branch: master
   access_key_id: "$AWS_ACCESS_KEY"
