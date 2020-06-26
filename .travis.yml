@@ -24,7 +24,7 @@ deploy:
   region: "us-east-2"
   app: "react-app"
   env: "react-app-env"
-  bucket_name: "elasticbeanstalk-us-east-2-572602263226"
+  bucket_name: "xdelasticbeanstalk-us-east-2-572602263226"
   # el bucket path el mismo que el app
   bucket_path: "react-app"
   on:
